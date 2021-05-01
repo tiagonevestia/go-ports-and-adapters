@@ -29,3 +29,11 @@ $ docker-compose up -d
 # Acessando o container
 $  docker exec -it appproduct bash
 ```
+
+## Utilidades
+
+Gerando mocks com o mockgen
+
+```bash
+$ mockgen -destination=application/mocks/application.go -source=application/product.go application 
+```

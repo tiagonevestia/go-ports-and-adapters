@@ -1,5 +1,7 @@
 package application
 
+import "errors"
+
 type ProductInterface interface {
 	IsValid() (bool, error)
 	Enable() error
@@ -13,6 +15,7 @@ type ProductInterface interface {
 const (
 	DISABLED = "disabled"
 	ENABLED = "enabled"
+	ERROR_ENABLED = "Para ativar o produto, o preço deve ser maior que zero."
 )
 
 type Product struct {
@@ -27,7 +30,11 @@ func (p *Product) IsValid() (bool, error) {
 }
 
 func (p *Product) Enable() error {
-	return nil
+	if p.Price > 0 {
+		p.Status = ENABLED
+		return nil
+	}
+	return errors.New(ERROR_ENABLED)
 }
 
 func (p *Product) Disable() error {

@@ -15,7 +15,7 @@ type ProductInterface interface {
 	IsValid() (bool, error)
 	Enable() error
 	Disable() error
-	getID() string
+	GetID() string
 	GetName() string
 	GetStatus() string
 	GetPrice() float64
